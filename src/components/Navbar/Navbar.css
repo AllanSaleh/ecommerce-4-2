@@ -1,0 +1,18 @@
+.nav-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  background-color: black;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+  margin: 0 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
