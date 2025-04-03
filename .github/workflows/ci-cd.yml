@@ -34,3 +34,26 @@ jobs:
       # Step 5: Build React app
       - name: Build React app
         run: npm run build:skip-ts  # Assumes you have a build script in package.json
+  deploy: #Continuous Deployment
+    runs-on: ubuntu-latest
+    needs: build  # Only run deploy after the build job has succeeded
+    steps:
+      # Step 1: Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      # Step 4: Deploy to Vercel (or another platform)
+      - name: Deploy to Vercel
+        run: |
+          npm install -g vercel
+          vercel --prod --yes --token ${{ secrets.VT_7}}
